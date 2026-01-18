@@ -1,6 +1,7 @@
 package com.fonishakaton.ReadRoom.Reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +43,7 @@ public class ReservationController {
     public Reservation createReservation(@RequestBody Reservation reservation) {
         return reservationRepository.save(reservation);
     }
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReservation(@PathVariable String id) {
         if (reservationRepository.existsById(id)) {
             reservationRepository.deleteById(id);
@@ -50,5 +52,16 @@ public class ReservationController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Reservation> markReservationAsShowedUp(@PathVariable String id) {
+        return reservationRepository.findById(id)
+                .map(reservation -> {
+                    reservation.setShowedup(true);
+                    reservationRepository.save(reservation);
+                    return ResponseEntity.ok(reservation);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 
 }

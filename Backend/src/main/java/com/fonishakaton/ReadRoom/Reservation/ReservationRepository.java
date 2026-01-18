@@ -13,4 +13,6 @@ public interface ReservationRepository extends MongoRepository<Reservation, Stri
     List<Reservation> findBySeatIdAndDate(String seatId, LocalDate date);
     List<Reservation> findByRoomId(String roomId);
     List<Reservation> findByRoomIdAndDate(String roomId,LocalDate date);
+    List<Reservation> findByShowedupFalseAndTimeBefore(LocalDateTime cutoff);
+    long deleteByShowedupFalseAndTimeBefore(LocalDateTime cutoff);
 }
