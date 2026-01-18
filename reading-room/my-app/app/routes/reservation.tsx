@@ -136,7 +136,7 @@ const handleProfileClick = () => {
           <p className="text-gray-500">Lokacija nije pronađena</p>
           <button
             onClick={() => navigate("/home")}
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="mt-4 px-4 py-2 bg-[#FFF2E6]-600 text-white rounded hover:bg-blue-700"
           >
             Nazad
           </button>
@@ -146,12 +146,12 @@ const handleProfileClick = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col pb-20">
+   <div className="min-h-screen bg-[#FFF2E6] flex flex-col pb-20">
       {/* Header */}
-      <div className="bg-white shadow-sm p-4 flex items-center justify-between">
+      <div className="bg-[#FFF2E6] shadow-sm p-4 flex items-center justify-between">
         <button
           onClick={() => navigate("/home")}
-          className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition"
+          className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#FFF2E6]-100 transition"
         >
           <svg
             className="w-6 h-6 text-gray-700"
@@ -172,7 +172,7 @@ const handleProfileClick = () => {
       </div>
 
       {/* Location Info */}
-      <div className="bg-white shadow-sm m-4 rounded-lg p-6 space-y-4">
+      <div className="bg-[#FFF2E6] shadow-sm m-4 rounded-lg p-6 space-y-4">
         <div>
           <h2 className="text-xl font-bold text-gray-900">{location.name}</h2>
           <p className="text-gray-600 text-sm mt-1">📍 {location.address}</p>
@@ -199,7 +199,7 @@ const handleProfileClick = () => {
       </div>
 
       {/* Reservation Form */}
-      <div className="bg-white shadow-sm m-4 rounded-lg p-6">
+      <div className="bg-[#FFF2E6] shadow-sm m-4 rounded-lg p-6">
         <h3 className="text-lg font-bold text-gray-900 mb-6">Odaberi vreme</h3>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -211,8 +211,7 @@ const handleProfileClick = () => {
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
-              min={new Date().toISOString().split("T")[0]}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-[#ece0d1] focus:ring-2 focus:ring-[#AF255B] focus:border-transparent text-gray-900"
             />
           </div>
 
@@ -223,7 +222,8 @@ const handleProfileClick = () => {
             <select
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-[#ece0d1] focus:ring-2 focus:ring-[#AF255B] focus:border-transparent text-gray-900"
+
             >
               <option value="">Odaberite vreme</option>
               <option value="08:00">08:00</option>
@@ -249,7 +249,8 @@ const handleProfileClick = () => {
             <select
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-[#ece0d1] focus:ring-2 focus:ring-[#AF255B] focus:border-transparent text-gray-900"
+
             >
               <option value="1">1 sat</option>
               <option value="2">2 sata</option>
@@ -263,14 +264,14 @@ const handleProfileClick = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#AF255B] hover:bg-[#9A1F50] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AF255B] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "Slanje..." : "Kreiraj rezervaciju"}
           </button>
         </form>
       </div>
       {/* Bottom Navigation */}
-<div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-between items-center p-4">
+<div className="fixed bottom-0 left-0 right-0 bg-[#FFF2E6] border-t border-gray-200 flex justify-between items-center p-4">
   
   {/* Logout */}
   <button
@@ -279,7 +280,7 @@ const handleProfileClick = () => {
     title="Odjava"
   >
     <svg
-      className="w-6 h-6 text-gray-700"
+     className="w-6 h-6 text-[#AF255B]"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -297,24 +298,24 @@ const handleProfileClick = () => {
   {/* Location / Home */}
 <button
   onClick={handleHomeClick}
-  className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition"
+  className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#AF255B]-100 transition"
   title="Početna"
 >
   <img
     src="/img/location_on.svg"
     alt="Lokacija"
-    className="w-6 h-6"
+    className="w-6 h-6 text-[#AF255B]"
   />
 </button>
 
   {/* Profile */}
   <button
     onClick={handleProfileClick}
-    className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition"
+    className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#AF255B]-100 transition"
     title="Profil"
   >
     <svg
-      className="w-6 h-6 text-gray-700"
+     className="w-6 h-6 text-[#AF255B]"
       fill="currentColor"
       viewBox="0 0 24 24"
     >

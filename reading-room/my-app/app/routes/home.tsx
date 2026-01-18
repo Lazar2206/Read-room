@@ -54,6 +54,14 @@ const mockLocations: Location[] = [
     distance: "500 m",
   },
 ];
+const locationImages: Record<number, string> = {
+  1: "/img/fon.jpg",
+  2: "/img/etf 1.png",
+  3: "/img/logo_ubsm 1.png",
+  4: "/img/Masinski-Logo 1.png",
+  5: "/img/pravni-logo.png",
+  6: "/img/medicinski-logo.jpg",
+};
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -97,32 +105,45 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="min-h-screen bg-[#FFF2E6] flex flex-col">
       {/* Search Bar */}
-      <div className="bg-white shadow-sm p-4">
-        <div className="flex items-center gap-2 bg-gray-200 rounded-full px-4 py-2">
-          <svg
-            className="w-5 h-5 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="Pretraži lokacije..."
-            className="flex-1 bg-transparent outline-none text-gray-700"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-      </div>
+    <div className="bg-[#FFF2E6]  shadow-sm p-4">
+  <div className="flex items-center gap-3">
+    
+    {/* Logo levo */}
+    <img
+      src="/img/logo.png"
+      alt="Logo"
+      className="w-30 h-30 object-contain"
+    />
+
+    {/* Search bar desno */}
+    <div className="flex items-center gap-2 bg-[#ece0d1]-200 rounded-full px-4 py-2 flex-1">
+      <svg
+        className="w-5 h-5 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
+      </svg>
+
+      <input
+        type="text"
+        placeholder="Pretraži lokacije..."
+        className="flex-1 bg-transparent outline-none text-gray-700"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+    </div>
+
+  </div>
+</div>
 
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto pb-20 p-4">
@@ -136,16 +157,23 @@ export default function Home() {
               <div
                 key={location.id}
                 onClick={() => handleLocationClick(location.id)}
-                className="bg-purple-100 rounded-lg p-4 mb-3 cursor-pointer hover:bg-purple-200 transition flex items-center justify-between"
+                className="bg-[#ece0d1] rounded-lg p-4 mb-3 cursor-pointer hover:bg-[#ece0d1]-200 transition flex items-center justify-between"
               >
-                <div className="flex-1">
-                  <div className="font-semibold text-gray-900">
-                    {location.name}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    {location.address}
-                  </div>
-                </div>
+               <div className="flex items-center gap-3 flex-1">
+              <img
+                src={locationImages[location.id]}
+                alt={location.name}
+               className="w-12 h-12 rounded-md object-cover"
+               />
+              <div>
+             <div className="font-semibold text-gray-900">
+      {location.name}
+    </div>
+    <div className="text-sm text-gray-600">
+      {location.address}
+    </div>
+  </div>
+</div>
                 <div className="flex items-center gap-3">
                   <div className="text-sm font-semibold text-gray-700">
                     {location.distance}
@@ -176,14 +204,23 @@ export default function Home() {
             <div
               key={location.id}
               onClick={() => handleLocationClick(location.id)}
-              className="bg-white rounded-lg p-4 mb-3 cursor-pointer hover:bg-gray-50 transition flex items-center justify-between shadow-sm"
+              className="bg-[#ece0d1] rounded-lg p-4 mb-3 cursor-pointer hover:bg-[#ece0d1]-50 transition flex items-center justify-between shadow-sm"
             >
-              <div className="flex-1">
-                <div className="font-semibold text-gray-900">
-                  {location.name}
-                </div>
-                <div className="text-sm text-gray-600">{location.address}</div>
-              </div>
+             <div className="flex items-center gap-3 flex-1">
+  <img
+    src={locationImages[location.id]}
+    alt={location.name}
+    className="w-12 h-12 rounded-md object-cover"
+  />
+  <div>
+    <div className="font-semibold text-gray-900">
+      {location.name}
+    </div>
+    <div className="text-sm text-gray-600">
+      {location.address}
+    </div>
+  </div>
+</div>
               <div className="flex items-center gap-3">
                 <div className="text-sm font-semibold text-gray-700">
                   {location.distance}
@@ -211,7 +248,7 @@ export default function Home() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-between items-center p-4">
+      <div className="fixed bottom-0 left-0 right-0 bg-[#ece0d1] border-t border-gray-200 flex justify-between items-center p-4">
         {/* Logout Button */}
         <button
           onClick={handleLogout}
@@ -219,7 +256,7 @@ export default function Home() {
           title="Odjava"
         >
           <svg
-            className="w-6 h-6 text-gray-700"
+            className="w-6 h-6 text-[#b12c5e]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -239,7 +276,7 @@ export default function Home() {
           title="Lokacija"
         >
           <svg
-            className="w-6 h-6 text-gray-700"
+            className="w-6 h-6 text-[#b12c5e]"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
@@ -254,7 +291,7 @@ export default function Home() {
           title="Profil"
         >
           <svg
-            className="w-6 h-6 text-gray-700"
+            className="w-6 h-6 text-[#b12c5e]"
             fill="currentColor"
             viewBox="0 0 24 24"
           >

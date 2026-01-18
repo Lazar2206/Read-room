@@ -63,16 +63,16 @@ export default function Login() {
         {isLogin ? (
           <>
             <div>
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Prijavi se!
-              </h2>
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-[#AF255B]">
+              Prijava
+            </h2>
               <div className="flex justify-center mt-4">
               <img
                src="/img/logo.png"
                alt="Čitaonica Trenutly logo"
                className="h-64 w-auto"
-  />
-</div>
+               />
+              </div>
             </div>
             <form className="mt-8 space-y-6" onSubmit={handleLogin}>
               <div className="rounded-md shadow-sm -space-y-px">
@@ -87,12 +87,12 @@ export default function Login() {
                     autoComplete="email"
                     required
                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                    placeholder="Unesite email"
+                    placeholder="Studentski mail"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-               
+               <hr></hr>
                 <div>
                   <label htmlFor="password" className="sr-only">
                     Šifra
@@ -104,7 +104,7 @@ export default function Login() {
                     autoComplete="current-password"
                     required
                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                    placeholder="Unesite šifru"
+                    placeholder="Lozinka"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -112,27 +112,31 @@ export default function Login() {
               </div>
 
               <div>
-                <button
-                  type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  Login
-                </button>
+               <button
+                type="submit"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#AF255B] hover:bg-[#9A1F50] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AF255B]"
+               >
+                Prijavite se
+              </button>
               </div>
 
-              <div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsLogin(false);
-                    setEmail("");
-                    setPassword("");
-                  }}
-                  className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  Sign Up
-                </button>
-              </div>
+              <div className="space-y-2">
+              <p className="text-center text-sm font-medium text-[#AF255B]">
+               Nemate nalog?
+              </p>
+
+               <button
+                type="button"
+                onClick={() => {
+                setIsLogin(false);
+                setEmail("");
+              setPassword("");
+              }}
+    className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  >
+    Registrujte se
+  </button>
+</div>
             </form>
           </>
         ) : (

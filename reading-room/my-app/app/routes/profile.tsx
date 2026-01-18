@@ -32,9 +32,9 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col pb-20">
+   <div className="min-h-screen bg-[#FFF2E6] flex flex-col pb-20">
       {/* Header */}
-      <div className="bg-white shadow-sm p-4 flex items-center justify-between">
+      <div className="bg-[#ece0d1] shadow-sm p-4 flex items-center justify-between">
         <button
           onClick={() => navigate("/home")}
           className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition"
@@ -58,7 +58,7 @@ export default function Profile() {
       </div>
 
       {/* Profile Info */}
-      <div className="bg-white shadow-sm m-4 rounded-lg p-6">
+      <div className="bg-[#ece0d1] shadow-sm m-4 rounded-lg p-6">
         <div className="flex items-center justify-center mb-6">
           <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
             {userProfile.firstName.charAt(0)}
@@ -100,7 +100,7 @@ export default function Profile() {
             {userProfile.reservations.map((reservation) => (
               <div
                 key={reservation.id}
-                className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition"
+                className="bg-[#ece0d1] rounded-lg p-4 shadow-sm hover:shadow-md transition"
               >
                 <div className="font-semibold text-gray-900">
                   {reservation.location}
@@ -127,7 +127,8 @@ export default function Profile() {
           onClick={() => {
             navigate("/");
           }}
-          className="w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+         className="w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#AF255B] hover:bg-[#9A1F50] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AF255B]"
+
         >
           Odjava
         </button>
