@@ -92,6 +92,17 @@ export default function Reservation() {
 
   const locationId = parseInt(id || "1");
   const location = mockLocationDetails[locationId];
+  const handleLogout = () => {
+  navigate("/");
+};
+
+const handleHomeClick = () => {
+  navigate("/home");
+};
+
+const handleProfileClick = () => {
+  navigate("/profile");
+};
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,7 +114,7 @@ export default function Reservation() {
 
     setIsSubmitting(true);
 
-    // Simulacija slanja na backend
+    
     setTimeout(() => {
       console.log("Rezervacija poslana:", {
         locationId,
@@ -169,13 +180,13 @@ export default function Reservation() {
 
         <div className="grid grid-cols-2 gap-4 border-t border-gray-200 pt-4">
           <div>
-            <p className="text-gray-600 text-sm">Dostupna mjesta</p>
+            <p className="text-gray-600 text-sm">Dostupna mesta</p>
             <p className="text-2xl font-bold text-green-600">
               {location.availableSpots}
             </p>
           </div>
           <div>
-            <p className="text-gray-600 text-sm">Radno vrijeme</p>
+            <p className="text-gray-600 text-sm">Radno vreme</p>
             <p className="text-sm font-semibold text-gray-900">
               {location.hours}
             </p>
@@ -189,7 +200,7 @@ export default function Reservation() {
 
       {/* Reservation Form */}
       <div className="bg-white shadow-sm m-4 rounded-lg p-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-6">Odaberi vrijeme</h3>
+        <h3 className="text-lg font-bold text-gray-900 mb-6">Odaberi vreme</h3>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -200,21 +211,21 @@ export default function Reservation() {
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
               min={new Date().toISOString().split("T")[0]}
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Vrijeme početka
+              Vreme početka
             </label>
             <select
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             >
-              <option value="">Odaberite vrijeme</option>
+              <option value="">Odaberite vreme</option>
               <option value="08:00">08:00</option>
               <option value="09:00">09:00</option>
               <option value="10:00">10:00</option>
@@ -238,7 +249,7 @@ export default function Reservation() {
             <select
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
             >
               <option value="1">1 sat</option>
               <option value="2">2 sata</option>
@@ -247,19 +258,6 @@ export default function Reservation() {
               <option value="5">5 sati</option>
               <option value="6">6 sati</option>
             </select>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Napomena (opciono)
-            </label>
-            <textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Dodaj napomenu..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              rows={3}
-            />
           </div>
 
           <button
@@ -271,6 +269,60 @@ export default function Reservation() {
           </button>
         </form>
       </div>
+      {/* Bottom Navigation */}
+<div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-between items-center p-4">
+  
+  {/* Logout */}
+  <button
+    onClick={handleLogout}
+    className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition"
+    title="Odjava"
+  >
+    <svg
+      className="w-6 h-6 text-gray-700"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+      />
+    </svg>
+  </button>
+
+  {/* Home */}
+  {/* Location / Home */}
+<button
+  onClick={handleHomeClick}
+  className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition"
+  title="Početna"
+>
+  <img
+    src="/img/location_on.svg"
+    alt="Lokacija"
+    className="w-6 h-6"
+  />
+</button>
+
+  {/* Profile */}
+  <button
+    onClick={handleProfileClick}
+    className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition"
+    title="Profil"
+  >
+    <svg
+      className="w-6 h-6 text-gray-700"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+    </svg>
+  </button>
+
+</div>
     </div>
   );
 }
