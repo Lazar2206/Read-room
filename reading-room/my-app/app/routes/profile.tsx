@@ -9,27 +9,55 @@ export const meta: Route.MetaFunction = () => [
 export default function Profile() {
   const navigate = useNavigate();
 
-  const userProfile = {
-    firstName: "Marko",
-    lastName: "Marković",
-    email: "marko@student.university.rs",
-    faculty: "Fakultet organizacionih nauka",
-    enrollmentYear: 2022,
-    reservations: [
-      {
-        id: 1,
-        location: "Fakultet organizacionih nauka",
-        date: "2026-01-20",
-        time: "14:00",
-      },
-      {
-        id: 2,
-        location: "Univerzitetska biblioteka",
-        date: "2026-01-22",
-        time: "10:00",
-      },
-    ],
-  };
+  const storedUser = localStorage.getItem('user');
+  const userProfile = storedUser ? JSON.parse(storedUser) : null;
+
+  if (!userProfile) {
+    return (
+      <div className="min-h-screen bg-[#FFF2E6] flex flex-col pb-20">
+        <div className="bg-[#ece0d1] shadow-sm p-4 flex items-center justify-between">
+          <button
+            onClick={() => navigate("/home")}
+            className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition"
+          >
+            <svg
+              className="w-6 h-6 text-gray-700"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <h1 className="text-2xl font-bold text-gray-900">Moj Profil</h1>
+          <div className="w-10"></div>
+        </div>
+        <div className="flex-1 flex items-center justify-center">
+          <p className="text-gray-600">Niste prijavljeni. Molim vas prijavite se.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const reservations = [
+    {
+      id: 1,
+      location: "Fakultet organizacionih nauka",
+      date: "2026-01-20",
+      time: "14:00",
+    },
+    {
+      id: 2,
+      location: "Univerzitetska biblioteka",
+      date: "2026-01-22",
+      time: "10:00",
+    },
+  ];
 
   return (
    <div className="min-h-screen bg-[#FFF2E6] flex flex-col pb-20">
@@ -80,12 +108,6 @@ export default function Profile() {
               {userProfile.faculty}
             </span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600">Godina upisa:</span>
-            <span className="font-semibold text-gray-900">
-              {userProfile.enrollmentYear}
-            </span>
-          </div>
         </div>
       </div>
 
@@ -95,9 +117,9 @@ export default function Profile() {
           Moje Rezervacije
         </h3>
 
-        {userProfile.reservations.length > 0 ? (
+        {reservations.length > 0 ? (
           <div className="space-y-3">
-            {userProfile.reservations.map((reservation) => (
+            {reservations.map((reservation) => (
               <div
                 key={reservation.id}
                 className="bg-[#ece0d1] rounded-lg p-4 shadow-sm hover:shadow-md transition"

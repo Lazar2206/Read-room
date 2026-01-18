@@ -40,6 +40,16 @@ export default function Login() {
     return;
   }
 
+  const user = {
+    firstName,
+    lastName,
+    email,
+    password,
+    faculty,
+  };
+
+  localStorage.setItem('user', JSON.stringify(user));
+
   console.log("Sign up sa:", {
     firstName,
     lastName,
